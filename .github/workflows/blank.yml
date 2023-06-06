@@ -1,11 +1,9 @@
-name: Log action 
-on:
- label:
-  types: [created]
- issues:
-  types: [opened]
-jobs: 
- log:
-  runs-on: ubuntu-latest 
-  steps:
-   - run: echo "Trigger - ${{ github.event_name }}, user - ${{ github.actor }}, date - `date`"
+on: issues
+jobs:
+job1:
+runs-on: ubuntu-latest
+steps:
+- name: View issue information
+run: |
+echo "Issue title: ${{ github.event.issue.title }}"
+echo "Issue body: ${{ github.event.issue.body }}"
