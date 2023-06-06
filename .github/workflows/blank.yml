@@ -11,7 +11,7 @@ jobs:
       issues: write
     steps:
       - name: Add comment
-        uses: actions/checkout@v3
+        uses: actions/test_repo@main
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
