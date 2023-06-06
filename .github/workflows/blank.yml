@@ -1,6 +1,6 @@
  name: Latest issue contributor on:
 issues:
-types: [opened]
+types: [open]
 jobs:
   check_latest_contributor:
 runs-on: ubuntu-latest
