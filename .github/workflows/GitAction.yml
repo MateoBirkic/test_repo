@@ -1,28 +1,15 @@
-name: Readme Template
+name: Latest issue contributor
 on:
-  schedule:
-    - cron: '0 */2 * * *' # every 2 hours
-  push:
-    branches: [ master ]
+  issues:
+    types: [closed]
 jobs:
-  publish:
+  check_latest_contributor:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Update GitHub Profile README
+      uses: theboi/github-update-readme@v1.3.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        fetch-depth: 0
-    - name: Generate README.md
-      uses: probablykasper/readme-template-action@v1
-      with:
-        token: ${{ secrets.README_TEMPLATE_TOKEN }}
-        template: TEMPLATE.md
-        output: README.md
-    - name: Update README.md
-      run: |
-        if [[ "$(git status --porcelain)" != "" ]]; then
-          git config user.name "GitHub Action"
-          git config user.email "action@github.com"
-          git add .
-          git commit -m "Auto-update README.md"
-          git push
-        fi
+        header: "Latest issue closed by: ${{ github.actor }}."
+        repoCount: 0
