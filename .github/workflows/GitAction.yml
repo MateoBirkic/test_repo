@@ -14,14 +14,10 @@ on:
       - assigned
 jobs:
   move-assigned-card:
-    permissions: write-all
-    
     runs-on: ubuntu-latest
     steps:
       - uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          project: Projekt
+          project: Docs Work
           column: In Progress
           repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
