@@ -1,16 +1,23 @@
-name: Latest issue contributor
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+
+name: Move assigned card
 on:
   issues:
-    types: [closed]
+    types:
+      - assigned
 jobs:
-  check_latest_contributor:
-    permissions: write-all
+  move-assigned-card:
     runs-on: ubuntu-latest
     steps:
-    - name: Update GitHub Profile README
-      uses: theboi/github-update-readme@v1.3.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        header: "Potrebna izrada dokumentacije za zadani issue: >> ${{ github.actor }}."
-        repoCount: 0
+      - uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
+        with:
+          project: Projekt
+          column: In Progress
+          repo-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
