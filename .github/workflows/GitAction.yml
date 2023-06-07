@@ -12,5 +12,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        header: "Potrebna izrada dokumentacije za zadani issue: ${{ github.actor }}."
+        body: "Potrebna izrada dokumentacije za zadani issue: ${{ github.re }}."
         repoCount: 0
