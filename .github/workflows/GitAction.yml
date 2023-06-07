@@ -21,3 +21,4 @@ jobs:
           project: Mat
           column: this
           repo-token: ${{ secrets.GHPROJECT_TOKEN }}
+          action: add
