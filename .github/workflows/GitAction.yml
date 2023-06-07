@@ -4,6 +4,7 @@ on:
     types: [closed]
 jobs:
   check_latest_contributor:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
     - name: Update GitHub Profile README
