@@ -1,15 +1,23 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# GitHub recommends pinning actions to a commit SHA.
+# To get a newer version, you will need to update the SHA.
+# You can also reference a tag or branch, but the action may change without warning.
+name: Move assigned card
 on:
   issues:
-    types: [assigned]
+    types:
+      - assigned
 jobs:
-  Add_New_Issue_To_Project:
+  move-assigned-card:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
-    - uses: konradpabjan/actions-add-new-issue-to-column@v3
-      with:
-        action-token: "${{ secrets.GHPROJECT_TOKEN  }}"
-        project-url: "https://github.com/users/MateoBirkic/projects/1"
-        column-name: "Todo"
-        
-        
-        
+      - uses: alex-page/github-project-automation-plus@7ffb872c64bd809d23563a130a0a97d01dfa8f43
+        with:
+          project: "Projekt"
+          column: "In Progress"
+          repo-token: ${{ secrets.GHPROJECT_TOKEN }}
